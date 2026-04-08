@@ -1,11 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSection from "../components/HeroSection.astro";
+import LatestArticles from "../components/LatestArticles.astro";
+import FeaturedProjects from "../components/FeaturedProjects.astro";
 ---
 
-<BaseLayout title="Home">
-  <h1 class="text-4xl font-bold">Jorge Martínez</h1>
-  <p>Backend Engineer</p>
-
-  <h2>About me</h2>
-  <p>I build backend services using Java and Spring Boot.</p>
+<BaseLayout title="Jorge Ramos Martínez — Backend Engineer">
+  <HeroSection />
+  <LatestArticles />
+  <FeaturedProjects />
 </BaseLayout>
