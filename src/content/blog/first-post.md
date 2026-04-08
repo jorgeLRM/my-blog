@@ -2,6 +2,8 @@
 title: "My First Post"
 description: "Getting started with my engineering blog"
 date: "2026-03-20"
+tags: ["Engineering", "Meta"]
+readTime: "3 min read"
 ---
 
 # My First Post
