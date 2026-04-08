@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import ArticleCard from "./ArticleCard.astro";
+
+const allPosts = await getCollection("blog");
+const latestPosts = allPosts
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
+---
+
+<section class="mx-auto max-w-4xl px-4 py-12 sm:px-6">
+  <div class="flex items-center justify-between">
+    <h2 class="text-2xl font-bold tracking-tight text-foreground">
+      Latest Articles
+    </h2>
+    <a
+      href="/blog"
+      class="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+    >
+      View all
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M5 12h14M12 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+
+  <div class="mt-6 flex flex-col gap-3">
+    {
+      latestPosts.map((post) => (
+        <ArticleCard
+          title={post.data.title}
+          description={post.data.description}
+          slug={post.id}
+          tags={post.data.tags}
+          readTime={post.data.readTime}
+        />
+      ))
+    }
+  </div>
+</section>
