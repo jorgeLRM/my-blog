@@ -1,12 +1,14 @@
 ---
-import { featuredProjects } from "../data/projects";
+import { projects } from "../data/projects";
 import ProjectCard from "./ProjectCard.astro";
+
+const latestProjects = projects.slice(-3);
 ---
 
 <section class="mx-auto max-w-4xl px-4 py-12 sm:px-6">
   <div class="flex items-center justify-between">
     <h2 class="text-2xl font-bold tracking-tight text-foreground">
-      Featured Projects
+      Latest Projects
     </h2>
     <a
       href="/projects"
@@ -30,16 +32,20 @@ import ProjectCard from "./ProjectCard.astro";
     </a>
   </div>
 
-  <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-    {
-      featuredProjects.map((project) => (
-        <ProjectCard
-          title={project.title}
-          description={project.description}
-          tags={project.tags}
-          githubUrl={project.githubUrl}
-        />
-      ))
-    }
-  </div>
+  {
+    latestProjects.length === 0 ? (
+      <p class="mt-6 text-sm text-muted-foreground">There are no projects yet.</p>
+    ) : (
+      <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+        {latestProjects.map((project) => (
+          <ProjectCard
+            title={project.title}
+            description={project.description}
+            tags={project.tags}
+            githubUrl={project.githubUrl}
+          />
+        ))}
+      </div>
+    )
+  }
 </section>
