@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-04-11
+
+### Added
+- Empty-state messages ("There are no posts yet." / "There are no projects yet.") on homepage sections and blog index page
+- Blog index page now uses `ArticleCard` for consistent tag and readTime display, sorted by date descending
+
+### Changed
+- Renamed "Featured Projects" section to "Latest Projects", now dynamically sourcing the last 3 entries from the projects array
+- `projects.ts` exports a plain `projects` array (array order implies recency); removed `featured` flag and static list
+
+### Fixed
+- `ArticleCard` tags and readTime footer not rendering due to an Astro JSX numeric-value conditional quirk; replaced with explicit boolean comparison
+
 ## [1.0.0] - 2026-04-08
 
 ### Added
